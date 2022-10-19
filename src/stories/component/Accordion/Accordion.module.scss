@@ -1,0 +1,39 @@
+.container {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eaeaea;
+
+  &[aria-disabled='true'] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  width: 100%;
+  border: 0;
+  background: #fff;
+  padding: 8px;
+  cursor: pointer;
+
+  .icon {
+    transition: transform 0.3s ease;
+  }
+
+  &[aria-expanded='true'] {
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.detail {
+  transition: height 0.3s ease;
+  overflow: hidden;
+
+  > div {
+    padding: 16px 0;
+  }
+}
