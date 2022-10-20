@@ -1,25 +1,7 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "clsx": "^1.2.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "sass": "^1.55.0",
-    "sass-loader": "^13.1.0",
-    "storybook-addon-sass-postcss": "^0.1.3",
-    "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
-  },
+  "name": "@wai15985/wui",
+  "version": "0.1.13",
+  "dependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -27,7 +9,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "rollup": "rollup -c"
+    "rollup": "rollup -c",
+    "publish": "npm publish --access public"
   },
   "eslintConfig": {
     "extends": [
@@ -57,8 +40,15 @@
       "last 1 safari version"
     ]
   },
+  "peerDependencies": {
+    "clsx": "^1.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^23.0.0",
+    "@rollup/plugin-image": "^3.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-typescript": "^9.0.1",
     "@storybook/addon-actions": "^6.5.12",
@@ -71,15 +61,31 @@
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "^0.0.13",
+    "storybook-addon-sass-postcss": "^0.1.3",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.1.0",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
-    "rollup": "^3.2.2",
-    "rollup-plugin-dts": "^5.0.0",
-    "webpack": "^5.74.0"
+    "rollup": "^2.60.0",
+    "rollup-plugin-dts": "^4.0.1",
+    "rollup-plugin-img": "^1.1.0",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-svg": "^2.0.0",
+    "webpack": "^5.74.0",
+    "typescript": "^4.4.2"
   },
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wai15985/wui"
+  },
+  "homepage": "https://github.com/wai15985/wui",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "files": [
     "dist"
   ],

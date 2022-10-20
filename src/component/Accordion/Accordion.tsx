@@ -3,13 +3,13 @@ import styles from './Accordion.module.scss';
 import cn from 'clsx';
 import ArrowUp from '../../assets/icn_chervon_up.svg';
 
-interface AccordionProps {
+type AccordionProps = {
   label: string;
   icon?: React.ReactNode;
   children?: React.ReactNode;
   className?: string;
   disable?: boolean;
-}
+};
 
 /**
  * Primary UI component for user interaction
@@ -45,7 +45,7 @@ export const Accordion = ({ label, icon, className, children, disable }: Accordi
         style={{ height: expanded ? height : 0 }}
         onTransitionEnd={() => expanded && setHeight('auto')}
       >
-        <div ref={ref}>{children}</div>
+        <div ref={ref!}>{children}</div>
       </div>
     </div>
   );

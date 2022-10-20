@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-interface CircularProgressBarProps {
+type CircularProgressBarProps = {
   value: number;
   size?: number;
   pathWidth?: number;
@@ -10,7 +10,7 @@ interface CircularProgressBarProps {
   totalAngle?: number;
   rotate?: number;
   startFrom?: keyof typeof StartAngle;
-}
+};
 
 /**
  * Primary UI component for user interaction

@@ -1,4 +1,4 @@
-import { Accordion } from './stories/component/Accordion/Accordion';
-import { CircularProgressBar } from './stories/component/CircularProgressBar/CircularProgressBar';
+import Accordion from './component/Accordion';
+import CircularProgressBar from './component/CircularProgressBar';
 
 export { Accordion, CircularProgressBar };
