@@ -83,7 +83,7 @@
     "type": "git",
     "url": "https://github.com/wai15985/wui"
   },
-  "homepage": "https://github.com/wai15985/wui",
+  "homepage": "https://wai15985.github.io/wui/",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "files": [
