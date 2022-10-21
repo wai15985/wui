@@ -7,7 +7,7 @@ type CircularProgressBarProps = {
   pathColor?: string;
   trailWidth?: number;
   trailColor?: string;
-  totalAngle?: number;
+  round?: number;
   rotate?: number;
   startFrom?: keyof typeof StartAngle;
 };
@@ -22,7 +22,7 @@ export const CircularProgressBar = ({
   trailWidth = 5,
   trailColor = '#eaeaea',
   value,
-  totalAngle = 360,
+  round = 360,
   rotate = 0,
   startFrom = 'TOP'
 }: CircularProgressBarProps) => {
@@ -31,9 +31,10 @@ export const CircularProgressBar = ({
   const center = size / 2;
   const radius = center - Math.max(pathWidth, trailWidth);
   const angle = percentage * 3.6;
-  const arcLength = 2 * Math.PI * radius;
-  const trailStrokeDasharray = arcLength * (totalAngle / 360);
-  const pathStrokeDasharray = (angle / 360) * arcLength * (totalAngle / 360);
+  const circumference = 2 * Math.PI * radius;
+  const trailLength = circumference * (round / 360);
+  const pathLength = (angle / 360) * circumference * (round / 360);
+  const offset = ((StartAngle[startFrom] - rotate) / 360) * circumference;
 
   useEffect(() => {
     setTimeout(() => setPercentage(value > 100 ? 100 : value));
@@ -48,25 +49,21 @@ export const CircularProgressBar = ({
         fill='transparent'
         stroke={trailColor}
         strokeLinecap='round'
-        stroke-dasharray={[trailStrokeDasharray, arcLength - trailStrokeDasharray]}
-        stroke-dashoffset={(StartAngle[startFrom] / 360) * arcLength}
+        stroke-dasharray={[trailLength, circumference - trailLength]}
+        stroke-dashoffset={offset}
         stroke-width={trailWidth}
-        transform={`rotate(${rotate})`}
-        transform-origin='center'
       />
       <circle
         r={radius}
         cx={center}
         cy={center}
         fill='transparent'
-        strokeLinecap={pathStrokeDasharray > 0 ? 'round' : 'butt'}
+        strokeLinecap={pathLength > 0 ? 'round' : 'butt'}
         stroke={pathColor}
-        stroke-dasharray={[pathStrokeDasharray, arcLength - pathStrokeDasharray]}
-        stroke-dashoffset={(StartAngle[startFrom] / 360) * arcLength}
+        stroke-dasharray={[pathLength, circumference - pathLength]}
+        stroke-dashoffset={offset}
         stroke-width={pathWidth}
         style={{ transition: 'stroke-dasharray .3s ease' }}
-        transform={`rotate(${rotate})`}
-        transform-origin='center'
       />
     </svg>
   );
