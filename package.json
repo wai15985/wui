@@ -1,7 +1,7 @@
 {
   "name": "wui-library",
   "description": "A react UI library.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "keywords": [
     "React",
     "Component",
@@ -21,7 +21,7 @@
     "build-storybook": "build-storybook -s public",
     "rollup": "rollup -c",
     "publish": "npm publish --access public",
-    "deploy": "gh-pages -d storybook-static"
+    "deploy": "npm run build-storybook && gh-pages -d storybook-static"
   },
   "peerDependencies": {
     "clsx": "^1.2.1",

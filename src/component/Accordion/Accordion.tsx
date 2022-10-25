@@ -45,7 +45,7 @@ export const Accordion = ({ label, icon, className, children, disable }: Accordi
         style={{ height: expanded ? height : 0 }}
         onTransitionEnd={() => expanded && setHeight('auto')}
       >
-        <div ref={ref!}>{children}</div>
+        <div ref={ref}>{children}</div>
       </div>
     </div>
   );

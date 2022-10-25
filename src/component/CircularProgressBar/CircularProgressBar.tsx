@@ -49,9 +49,9 @@ export const CircularProgressBar = ({
         fill='transparent'
         stroke={trailColor}
         strokeLinecap='round'
-        stroke-dasharray={[trailLength, circumference - trailLength]}
-        stroke-dashoffset={offset}
-        stroke-width={trailWidth}
+        strokeDasharray={`${trailLength} ${circumference - trailLength}`}
+        strokeDashoffset={offset}
+        strokeWidth={trailWidth}
       />
       <circle
         r={radius}
@@ -60,9 +60,9 @@ export const CircularProgressBar = ({
         fill='transparent'
         strokeLinecap={pathLength > 0 ? 'round' : 'butt'}
         stroke={pathColor}
-        stroke-dasharray={[pathLength, circumference - pathLength]}
-        stroke-dashoffset={offset}
-        stroke-width={pathWidth}
+        strokeDasharray={`${pathLength} ${circumference - pathLength}`}
+        strokeDashoffset={offset}
+        strokeWidth={pathWidth}
         style={{ transition: 'stroke-dasharray .3s ease' }}
       />
     </svg>
