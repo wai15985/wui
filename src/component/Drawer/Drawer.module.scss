@@ -1,0 +1,69 @@
+$positions: (left, right, top, bottom);
+
+@function transform($position, $open) {
+  $value: if($open, 0%, if($position == top or $position == left, -100%, 100%));
+
+  @return if($position == top or $position == bottom, translateY($value), translateX($value));
+}
+
+.backdrop {
+  animation: backdrop-open 0.3s;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+
+  &.closing {
+    animation: backdrop-close 0.3s;
+  }
+}
+
+.drawer {
+  background-color: #ffffff;
+  position: fixed;
+  transition: transform 0.3s ease;
+  z-index: 400;
+
+  &.left,
+  &.right {
+    height: 100vh;
+    width: 300px;
+  }
+
+  &.top,
+  &.bottom {
+    height: 300px;
+    width: 100vh;
+  }
+
+  @each $position in $positions {
+    &.#{$position} {
+      transform: transform($position, false);
+      #{$position}: 0;
+
+      &.open {
+        transform: transform($position, true);
+      }
+    }
+  }
+}
+
+@keyframes backdrop-open {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes backdrop-close {
+  from {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  to {
+    background-color: transparent;
+  }
+}
