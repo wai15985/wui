@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { HTMLAttributes, useEffect, useRef, useState } from 'react';
 import styles from './Accordion.module.scss';
 import cn from 'clsx';
 import ArrowUp from '../../assets/icn_chervon_up.svg';
@@ -9,12 +9,19 @@ type AccordionProps = {
   children?: React.ReactNode;
   className?: string;
   disable?: boolean;
-};
+} & HTMLAttributes<HTMLDivElement>;
 
 /**
  * Primary UI component for user interaction
  */
-export const Accordion = ({ label, icon, className, children, disable }: AccordionProps) => {
+export const Accordion = ({
+  label,
+  icon,
+  className,
+  children,
+  disable,
+  ...props
+}: AccordionProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<number | 'auto'>(0);
   const [expanded, setExpanded] = useState(false);
@@ -28,7 +35,7 @@ export const Accordion = ({ label, icon, className, children, disable }: Accordi
   }, [children]);
 
   return (
-    <div className={cn(styles.container, className)} aria-disabled={disable}>
+    <div className={cn(styles.container, className)} aria-disabled={disable} {...props}>
       <button
         className={styles.button}
         onClick={() => {
